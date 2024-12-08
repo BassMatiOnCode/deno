@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="template-info" file-name="empty.htm" version="2022-02-09" editor="USP" />
+<meta name="author" content="USP" />
+<meta name="creation-date" content="2022-04-01" />
+<meta name="editor" content="USP" />
+<meta name="change-date" content="2022-04-01" />
+<meta name="version" content="1" />
+<meta name="sectionTitle" content="title.svg" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="all" />
+<link rel="stylesheet" href="/inc/webcat/page-structure/tutorial-page-1.css" />
+<script type="module" src="/inc/webcat/page-structure/tutorial-page-1.js" ></script>
+
+<meta name="categories" content="Programming > Deno" />
+<meta name="tags" content="programming, technologies, Deno, scripting host, JavaScript, TypeScript" />
+<meta name="description" content="There are multiple ways to install deno. One method is copy-installation." />
+ 
+<title>Getting Started With Deno (Scripting > Deno)</title>
+
+</head><body><header id="page-header"></header><div id="main-toolbar"></div><main id="page-content">
+
+<h1>Getting Started With Deno</h1>
+
+<h2 cbc>Installation</h2><div>
+
+<p>Download Deno from the official <a href="https://github.com/denoland/deno/releases">releases page</a> and install it to a folder of your choice.</p>
+
+<p>To test the installation, open a console window and run the command <tt>deno --version</tt>. If everything is ok, you should get a similar answer:</p>
+
+<pre class="box">usp@home>deno --version
+deno 1.17.1 (release, x86_64-pc-windows-msvc)
+v8 9.7.106.15
+typescript 4.5.2
+</pre>
+
+<!-- h2 --></div>
+
+<h2 cbc>Updating</h2><div>
+
+<p>By default, deno does not update anything, neither itself, nor any imported module. At first sight, this my look like a shortcoming, but actually, it ensures that existing applications are not broken accidently.</p>
+
+<p>However, you can update (upgrade) deno manually by issuing the command</p>
+
+<pre>deno --upgrade</pre>
+
+<!-- h2 --></div>
+
+<h2 cbc>Version Stability and Deployment</h2><div>
+
+<p>To make sure that imported modules work with your deployed version of deno, make sure to include the version number in the module import statements:</p>
+
+<pre>import { Application } from "https://deno.land/x/oak@v10.5.1/mod.ts";</pre>
+
+<!-- h2 --></div>
+
+<h2 cbc>Hello World</h2><div>
+
+<p>Let's get our hands dirty!</p>
+
+<ol class="instructions" style="padding-left:5px">
+<li>Create a project folder.</li>
+<li>Inside, create an empty text file named "hello-world.ts"</li>
+<li>Enter the following code:
+	<pre>console.log( "Welcome to Deno!" );</pre></li>
+<li>Open a console window, navigate to project folder, and run the following command:
+	<pre>deno run hello-world.ts</pre></li>
+<li>You should get the following output:
+	<pre>usp@home>deno run welcome.ts
+	Welcome to Deno!</pre></li>
+<li>Push the code to an online code repository, such as Github.</li>
+<li>Find the "raw" url to the file, and execute the following command:
+	<pre>usp@home>deno run https://raw.githubusercontent.com/BassMatiOnCode/deno/main/docs/welcome.ts </pre>
+	Note that your url may vary.</li>
+<li>You should get the following output:
+	<pre>Download https://raw.githubusercontent.com/BassMatiOnCode/deno/main/docs/welcome.ts
+	Check https://raw.githubusercontent.com/BassMatiOnCode/deno/main/docs/welcome.ts
+	Welcome to Deno!</pre></li>
+</ol>
+
+<p>As you can see, the code can be loaded from anywhere, is downloaded, compiled and executed locally. The second invocation runs the compiled local program directly, without downloading.</p>
+
+<p>Is that a security concern? No, it isn't, because </p>
+<ol>
+<li>The downloaded code runs in a V8 sandbox</li>
+<li>Without further provisions, the compiled program has no access to local resources, such as file system or network.</li>
+</ol>
+
+<!-- h2 --></div>
+
+</body></html>
